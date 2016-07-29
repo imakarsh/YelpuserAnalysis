@@ -16,7 +16,7 @@ object YelpAnalysis {
   def saveDfToCsv(df: DataFrame, tsvOutput: String,
                   sep: String = ",", header: Boolean = false): Unit = {
 
-    df.repartition(1).write.
+    df.repartition(1).write. //repartition the data to extract as a single file. 
       format("com.databricks.spark.csv").
       option("header", header.toString).
       option("delimiter", sep).save(tsvOutput)
